@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <bottom>
+        <ToolBar prefHeight="40.0" prefWidth="200.0" rotate="180.0" BorderPane.alignment="CENTER">
+            <items>
+                <HBox alignment="BOTTOM_RIGHT" rotate="180.0">
+                    <children>
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#OnAction_cancel" text="Cancel">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button defaultButton="true" mnemonicParsing="false" onAction="#OnAction_ok" prefWidth="100.0" text="OK">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+            </items>
+        </ToolBar>
+    </bottom>
+    <center>
+        <TabPane>
+            <tabs>
+                <Tab closable="false" text="Dati Cliente">
+                    <content>
+                        <VBox BorderPane.alignment="CENTER">
+                            <children>
+                        <Label text="Generalità">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Separator prefWidth="200.0" />
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="ID Cliente:">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="lbl_id" layoutX="20.0" layoutY="20.0" text="N.D.">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="System Bold Italic" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                                <HBox>
+                                    <children>
+                                      <VBox>
+                                          <children>
+                                              <Label text="Titolo">
+                                                  <VBox.margin>
+                                                      <Insets />
+                                                  </VBox.margin>
+                                              </Label>
+                                              <ComboBox fx:id="cmbx_title" prefWidth="100.0" promptText="Select...">
+                                                  <VBox.margin>
+                                                      <Insets />
+                                                  </VBox.margin>
+                                              </ComboBox>
+                                          </children>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                                      </VBox>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets left="5.0" right="5.0" top="5.0" />
+                                    </VBox.margin>
+                                </HBox>
+                        <HBox>
+                           <children>
+                                        <VBox>
+                                            <children>
+                                                <Label text="Nome">
+                                                    <VBox.margin>
+                                                        <Insets />
+                                                    </VBox.margin>
+                                                </Label>
+                                                <TextField fx:id="txtfld_name" />
+                                            </children>
+                                            <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                            </HBox.margin>
+                                        </VBox>
+                                        <VBox>
+                                            <children>
+                                                <Label text="Cognome">
+                                                    <VBox.margin>
+                                                        <Insets />
+                                                    </VBox.margin>
+                                                </Label>
+                                                <TextField fx:id="txtfld_surname" />
+                                            </children>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                                        </VBox>
+                              <VBox layoutX="196.0" layoutY="15.0">
+                                 <children>
+                                    <Label text="Organizzazione">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Label>
+                                    <TextField fx:id="txtfld_organization" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <Label layoutX="20.0" layoutY="20.0" text="Dati Fiscali">
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Separator layoutX="10.0" layoutY="35.0" prefWidth="200.0" />
+                        <HBox>
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label text="Codice Fiscale">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Label>
+                                    <TextField fx:id="txtfld_tax_code" prefWidth="300.0" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox layoutX="15.0" layoutY="75.0">
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label text="Partita IVA">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Label>
+                                    <TextField fx:id="txtfld_iva_code" prefWidth="300.0" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <Label layoutX="20.0" layoutY="20.0" text="Contatti">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Separator layoutX="10.0" layoutY="35.0" prefWidth="200.0" />
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints vgrow="SOMETIMES" />
+                            <RowConstraints vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <ListView fx:id="lstVw_telephoneNumbers" editable="true" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" />
+                                 </GridPane.margin>
+                              </ListView>
+                              <ListView fx:id="lstVw_emailAddresses" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" />
+                                 </GridPane.margin>
+                              </ListView>
+                              <BorderPane>
+                                 <right>
+                                    <Button mnemonicParsing="false" onAction="#OnAction_add_telephone_number" text="+" textFill="#4ccd4c" BorderPane.alignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font></Button>
+                                 </right>
+                                 <left>
+                                    <Label text="Contatti Telefonici" BorderPane.alignment="CENTER" />
+                                 </left>
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </BorderPane>
+                              <BorderPane GridPane.columnIndex="1">
+                                 <left>
+                                    <Label text="Posta elettronica" BorderPane.alignment="CENTER" />
+                                 </left>
+                                 <right>
+                                    <Button mnemonicParsing="false" onAction="#OnAction_add_email_address" text="+" textFill="#4ccd4c" BorderPane.alignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                 </right>
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </BorderPane>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </GridPane>
+                            </children>
+                            <BorderPane.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </BorderPane.margin>
+                        </VBox>
+                    </content>
+                </Tab>
+                <Tab closable="false" text="Address">
+                    <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <HBox>
+                                    <children>
+                                        <VBox>
+                                            <children>
+                                                <Label text="Town">
+                                                    <VBox.margin>
+                                                        <Insets bottom="5.0" />
+                                                    </VBox.margin>
+                                                </Label>
+                                                <TextField fx:id="txtfld_town" />
+                                            </children>
+                                            <HBox.margin>
+                                                <Insets right="10.0" />
+                                            </HBox.margin>
+                                        </VBox>
+                                        <VBox>
+                                            <children>
+                                                <Label text="Province">
+                                                    <VBox.margin>
+                                                        <Insets bottom="5.0" />
+                                                    </VBox.margin>
+                                                </Label>
+                                                <ComboBox fx:id="cmbx_province" prefWidth="150.0" promptText="Select..." />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </VBox.margin>
+                                </HBox>
+                            </children>
+                            <BorderPane.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </BorderPane.margin>
+                        </VBox>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>
