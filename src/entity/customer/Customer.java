@@ -15,25 +15,25 @@ public class Customer implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "id", unique = true)
+	@Column(name = "customer_id", unique = true)
 	private int id;
 
-	@Column(name = "name", nullable = false)
+	@Column(name = "customer_name", nullable = false)
 	private String name;
 
-	@Column(name = "surname", nullable = false)
+	@Column(name = "customer_surname", nullable = false)
 	private String surname;
 
-	@Column(name = "title")
+	@Column(name = "customer_title")
 	private Title title;
 
-	@Column(name = "gender")
+	@Column(name = "customer_gender")
 	private Gender gender;
 
 	// private List<String> emailAddresses;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = TelephoneNumber.class)
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "customer_id")
 	private List<TelephoneNumber> telephoneNumbers = new ArrayList<>();
 
 	public List<TelephoneNumber> getTelephoneNumbers() {
