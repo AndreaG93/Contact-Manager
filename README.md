@@ -7,7 +7,6 @@ A simple JavaFX application to manage contacts. This project is designed for edu
 
 ### Required libraries
 Following libraries are required to test the application
-
 * junit:junit:4.12
 * org.hibernate:hibernate-core:5.2.12.Final
 * net.kemitix:sqlite-dialect:0.1.0
