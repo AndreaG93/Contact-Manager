@@ -1,4 +1,4 @@
-package database;
+package test.database;
 
 import controllers.dao.AddressDAO;
 import controllers.dao.CustomerDAO;

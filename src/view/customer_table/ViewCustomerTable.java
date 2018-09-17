@@ -23,7 +23,7 @@ public class ViewCustomerTable extends View {
 				new Callback<TableColumn.CellDataFeatures<Customer, String>, ObservableValue<String>>() {
 
 					@Override
-					public ObservableValue<String> call(CellDataFeatures<Customer, String> param) {
+					public ObservableValue<String> call(final CellDataFeatures<Customer, String> param) {
 						return new ObservableValue<String>() {
 
 							@Override
@@ -65,7 +65,7 @@ public class ViewCustomerTable extends View {
 				new Callback<TableColumn.CellDataFeatures<Customer, String>, ObservableValue<String>>() {
 
 					@Override
-					public ObservableValue<String> call(CellDataFeatures<Customer, String> param) {
+					public ObservableValue<String> call(final CellDataFeatures<Customer, String> param) {
 						return new ObservableValue<String>() {
 
 							@Override

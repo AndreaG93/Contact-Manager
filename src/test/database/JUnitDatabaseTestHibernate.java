@@ -1,10 +1,11 @@
-package database;
+package test.database;
 
 import controllers.dao.AddressDAO;
 import controllers.dao.CustomerDAO;
 import controllers.dao.factory.DAOFactory;
-import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
 
 /**
  * This class provides some method to test database using 'Hibernate'.
