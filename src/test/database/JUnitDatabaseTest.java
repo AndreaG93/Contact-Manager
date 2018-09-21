@@ -1,14 +1,15 @@
 package test.database;
 
-import controllers.dao.AddressDAO;
-import controllers.dao.CustomerDAO;
-import entity.address.Address;
-import entity.customer.Customer;
-import entity.customer.Gender;
-import entity.customer.Title;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+
+import application.entity.address.Address;
+import application.entity.customer.Customer;
+import application.entity.customer.Gender;
+import application.entity.customer.Title;
+import application.persistence.PersistenceAddress;
+import application.persistence.PersistenceCustomer;
 
 /**
  * This class provides some method to test database.
@@ -51,7 +52,7 @@ class JUnitDatabaseTest {
      *
      * @param pAddressDAO - Represents an {@code AddressDAO} object.
      */
-    protected static void addressCRUDTest(AddressDAO pAddressDAO) {
+    protected static void addressCRUDTest(PersistenceAddress pAddressDAO) {
 
         // Sub-test 1: Create / INSERT...
         // =================================================================== //
@@ -104,7 +105,7 @@ class JUnitDatabaseTest {
      *
      * @param pCustomerDAO - Represents an {@code CustomerDAO} object.
      */
-    protected static void customerCRUDTest(CustomerDAO pCustomerDAO) {
+    protected static void customerCRUDTest(PersistenceCustomer pCustomerDAO) {
 
         // Sub-test 1: Create / INSERT...
         // =================================================================== //

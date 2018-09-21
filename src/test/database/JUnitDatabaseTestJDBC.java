@@ -13,17 +13,17 @@ import application.persistence.factory.PersistenceFactory;
  * @version 1.0
  * @author Andrea Graziani
  */
-class JUnitDatabaseTestHibernate extends JUnitDatabaseTest {
+class JUnitDatabaseTestJDBC extends JUnitDatabaseTest {
 
-	@Test
-    public void HibernateTest() {
+    @Test
+    public void JDBCTest() {
  
 		try {
 			
 			// Get 'JDBC' DAO factory...
 	        // =================================================================== //
 	        PersistenceFactory myDaoFactory = null;
-			myDaoFactory = PersistenceFactory.getDAOFactory(PersistenceFactory.HIBERNATE);		
+			myDaoFactory = PersistenceFactory.getDAOFactory(PersistenceFactory.JDBC);		
 			
 			// Getting needed DAO classes...
 	        // =================================================================== //
