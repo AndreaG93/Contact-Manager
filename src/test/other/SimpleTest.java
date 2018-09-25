@@ -2,6 +2,8 @@ package test.other;
 
 
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -16,6 +18,9 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
 import org.junit.jupiter.api.Test;
+
+import application.entity.customer.Customer;
+import application.logic.ApplicationValidation;
 
 public class SimpleTest {
 
@@ -55,19 +60,35 @@ public class SimpleTest {
 	
 	@Test
 	public void ttttt() {
-		Testggg fff = new Testggg();
-		fff.setUnsupported(true);
 		
-		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-		Validator validator = factory.getValidator();
+		Customer mCustomer1 = new Customer();
+		Customer mCustomer2 = new Customer();
+		Customer mCustomer3 = new Customer();
 		
+		mCustomer1.setName("Andrea");
+		mCustomer1.setSurname("Graziani");
+		mCustomer3.setEmail("aldo.giovanni.giacomo@pippo.it");
 		
-		Set<ConstraintViolation<Testggg>> violations = validator.validate(fff);
+		mCustomer2.setName("A4dr3a");
+		mCustomer2.setSurname("Asdfghhhhhhhhgjjfhdfdgfdshgfdsgfdsghfdsgfdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfsdfds");
 		
-		for (ConstraintViolation<Testggg> violation : violations) {
-		    System.out.println(violation.getMessage());
-
-		}
+		mCustomer3.setName("aNDREA");
+		mCustomer3.setSurname("Graxxxx");
+		mCustomer3.setEmail("aldo.giovanni.giacomo.it");
+		
+		Set<ConstraintViolation<Customer>> mViolations1 = ApplicationValidation.validate(mCustomer1);
+		Set<ConstraintViolation<Customer>> mViolations2 = ApplicationValidation.validate(mCustomer2);
+		Set<ConstraintViolation<Customer>> mViolations3 = ApplicationValidation.validate(mCustomer3);
+		
+		assertEquals(0, mViolations1.size());
+		assertEquals(2, mViolations2.size());
+		assertEquals(2, mViolations3.size());
+		
+		for (ConstraintViolation<Customer> violation : mViolations2) 
+			System.out.println("Violation2: " + violation.getMessage());	
+		
+		for (ConstraintViolation<Customer> violation : mViolations3) 
+			System.out.println("Violation3: " + violation.getMessage());	
 	}
 }
 

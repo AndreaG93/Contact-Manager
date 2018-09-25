@@ -1,10 +1,9 @@
 package test.other;
 
-import java.util.List;
 
 public class PasswordUtils 
 {   
-	@UseCase(id = 47, description =   "Passwords must contain at least one numeric")   
+	@UseCase(id = 47, description = "Passwords must contain at least one numeric")   
 	public static boolean validatePassword(String password) 
 	{     
 		return (password.matches("\\w*\\d\\w*"));   

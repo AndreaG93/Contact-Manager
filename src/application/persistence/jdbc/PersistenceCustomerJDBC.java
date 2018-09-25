@@ -1,9 +1,13 @@
 package application.persistence.jdbc;
 
+import java.lang.reflect.Field;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import javax.persistence.Column;
 
 import application.entity.customer.Customer;
 import application.entity.customer.Gender;
@@ -96,6 +100,42 @@ public class PersistenceCustomerJDBC implements PersistenceCustomer {
 
 			public Object extractDataFromResultSet(ResultSet pResultSet) throws SQLException {
 
+
+				Customer output = new Customer();
+				List<Field> mFieldList = Arrays.asList((Customer.class.getDeclaredFields()));
+
+
+				if (pResultSet.next()) {
+					for (Field mField : mFieldList) {
+
+						Column mColumn = mField.getAnnotation(Column.class);  
+
+						if (mColumn != null) {
+
+							String name = mColumn.name();
+
+							try{
+								Object value = pResultSet.getObject(name);
+
+								mField.setAccessible(true);
+								mField.set(output, value);
+								
+								
+
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+					}
+				}
+
+				return output;
+
+
+
+
+
+				/*
 				if (pResultSet.next()) {
 					Customer mCustomer = new Customer();
 
@@ -108,6 +148,7 @@ public class PersistenceCustomerJDBC implements PersistenceCustomer {
 				}
 				else
 					return null;
+				 */
 			}
 		};
 
@@ -129,7 +170,7 @@ public class PersistenceCustomerJDBC implements PersistenceCustomer {
 			public Object extractDataFromResultSet(ResultSet pResultSet) throws SQLException {
 
 				ArrayList<Customer> mOutput = new ArrayList<>();
-				
+
 				while (pResultSet.next()) {
 					Customer mCustomer = new Customer();
 
@@ -141,7 +182,7 @@ public class PersistenceCustomerJDBC implements PersistenceCustomer {
 
 					mOutput.add(mCustomer);	
 				}
-				
+
 				return mOutput;	
 			}
 		};

@@ -1,6 +1,10 @@
 package application.entity.customer;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import application.entity.address.Address;
 import application.entity.telephone_number.TelephoneNumber;
@@ -20,17 +24,25 @@ public class Customer implements Serializable {
 	public static final String COLUMN_TITLE = "customer_title";
 	public static final String COLUMN_GENDER = "customer_gender";
 	
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = COLUMN_ID, unique = true)
 	private int id;
 
 	@Column(name = COLUMN_NAME, nullable = false)
+	@NotEmpty
+	@Size(max = 32, message = "Customer name must be less than 32 characters")
+	@Pattern(regexp = "[A-Z][a-z]*", message="Customer name is invalid.")
 	private String name;
 
 	@Column(name = COLUMN_SURNAME, nullable = false)
+	@NotEmpty
+	@Size(max = 32, message = "Customer surname must be less than 32 characters")
+	@Pattern(regexp = "[A-Z][a-z]*", message="Customer surname is invalid.")
 	private String surname;
+	
+	@Email(message = "Email should be valid")
+    private String email;
 
 	@Column(name = COLUMN_TITLE)
 	private Title title;
@@ -64,10 +76,26 @@ public class Customer implements Serializable {
 	}
 
 	public Customer() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	
+	
+	
+
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public Address getAddress() {
 		return address;

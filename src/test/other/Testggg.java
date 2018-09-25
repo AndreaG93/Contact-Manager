@@ -5,7 +5,10 @@ import javax.validation.constraints.AssertFalse;
 public class Testggg {
 
 	
-	@AssertFalse
+	
+	
+	
+	@AssertFalse(message="prova")
 	boolean isUnsupported;
 
 	/**
