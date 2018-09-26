@@ -123,7 +123,7 @@ class JUnitDatabaseTest {
         Customer mCustomer = pCustomerDAO.get(mID);
 
         assertNotNull(mCustomer);
-        assertEquals(mID, mCustomer.getId());
+        assertEquals(mID, mCustomer.getID());
 
         assertEquals(NAME_1, mCustomer.getName());
         assertEquals(SURNAME_1, mCustomer.getSurname());

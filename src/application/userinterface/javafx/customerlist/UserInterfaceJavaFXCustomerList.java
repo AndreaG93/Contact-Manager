@@ -1,9 +1,9 @@
-package application.userinterface.graphical.javafx.customerlist;
+package application.userinterface.javafx.customerlist;
 
 
 import application.entity.customer.Customer;
 import application.logic.CustomerManager;
-import application.userinterface.graphical.javafx.UserInterfaceJavaFX;
+import application.userinterface.javafx.UserInterfaceJavaFX;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;

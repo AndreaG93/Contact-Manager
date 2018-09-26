@@ -1,11 +1,11 @@
-package application.userinterface.graphical.javafx;
+package application.userinterface.javafx;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.text.MessageFormat;
-import application.userinterface.graphical.UserInterface;
+import application.userinterface.UserInterface;
 
 /**
  * This class represent an user graphical interface based on JavaFX system.
