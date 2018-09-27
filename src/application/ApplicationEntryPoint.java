@@ -1,6 +1,6 @@
 package application;
 
-import application.userinterface.javafx.customerlist.UserInterfaceJavaFXCustomerList;
+import application.gui.javafx.gui.customerlist.UserInterfaceJavaFXCustomerList;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

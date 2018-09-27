@@ -3,7 +3,8 @@ package application.entity.customer;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
-import application.userinterface.annotation.RepresentableData;
+import application.gui.javafx.annotation.CallableByRuntimeGeneratedControl;
+import application.gui.javafx.annotation.CallableByRuntimeGeneratedTableView;
 import application.entity.address.Address;
 import application.entity.telephone_number.TelephoneNumber;
 import application.persistence.jdbc.annotation.CustomerSetterJDBC;
@@ -94,16 +95,23 @@ public class Customer implements Serializable {
     }
 
     @CustomerSetterJDBC(columnName = COLUMN_NAME)
+    //@EditableFieldJavaFX(controlLabel = "Nome", promptText = "Inserisci il tuo nome...", controlClassName = "javafx.scene.control.TextField")
+    @CallableByRuntimeGeneratedControl
+            (promptText = "Inserisci il nome...", description = "Nome", controlType = "RuntimeGeneratedTextField")
     public void setName(String name) {
         this.name = name;
     }
 
     @CustomerSetterJDBC(columnName = COLUMN_SURNAME)
+    @CallableByRuntimeGeneratedControl
+            (promptText = "Inserisci il cognome...", description = "Cognome", controlType = "RuntimeGeneratedTextField")
     public void setSurname(String surname) {
         this.surname = surname;
     }
 
     @CustomerSetterJDBC(columnName = COLUMN_TITLE)
+    @CallableByRuntimeGeneratedControl
+            (description = "Titolo", controlType = "RuntimeGeneratedComboBox")
     public void setTitle(int title) {
         this.title = Title.values()[ (int) title];
     }
@@ -161,26 +169,26 @@ public class Customer implements Serializable {
 
 
 
-    @RepresentableData(description = "ID")
+    @CallableByRuntimeGeneratedTableView(description = "ID")
     public String getRepresentableId() {
         return String.valueOf(this.ID);
     }
 
-    @RepresentableData(description = "Cliente")
+    @CallableByRuntimeGeneratedTableView(description = "Cliente")
     public String getRepresentableName() {
         return String.format("%s. %s %s", this.title.toString(), this.surname, this.name);
     }
-    @RepresentableData(description = "Data Registrazione")
+    @CallableByRuntimeGeneratedTableView(description = "Data Registrazione")
     public String getRepresentableRegistrationDate() {
         return "";
     }
 
-    @RepresentableData(description = "Codice Fiscale")
+    @CallableByRuntimeGeneratedTableView(description = "Codice Fiscale")
     public String getRepresentableCodiceFiscale() {
         return "";
     }
 
-    @RepresentableData(description = "Data di nascita")
+    @CallableByRuntimeGeneratedTableView(description = "Data di nascita")
     public String getRepresentableBirthday() {
         return "";
     }

@@ -1,4 +1,4 @@
-package application.userinterface;
+package application.gui;
 
 import java.util.ArrayList;
 
@@ -53,5 +53,4 @@ public abstract class UserInterface {
 	 * This method is used to close current user interface.
 	 */
 	public abstract void closeUserInterface();
-	
 }

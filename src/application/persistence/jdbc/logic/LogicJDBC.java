@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 /**
  * This class contains application logic to manage a JDBC based persistence system.
- * 
+ *
  * @author Andrea Graziani
  * @version 1.0
  */
@@ -18,19 +18,19 @@ public abstract class LogicJDBC {
 	private static final String DB_URL = "jdbc:postgresql://localhost:5432/HibernateDB";
 	private static final String DB_USERNAME = "postgres";
 	private static final String DB_PASSWORD = "andrea";
-	
+
 	/**
 	 * This function is used to extract data from specified {@code ResultSet} object.
-	 * 
+	 *
 	 * @param pResultSet - Represents a {@code ResultSet} object.
 	 * @return An {@code Object}.
 	 * @throws SQLException
 	 */
-	public abstract Object extractDataFromResultSet(ResultSet pResultSet) throws SQLException; 
-		
+	public abstract Object extractDataFromResultSet(ResultSet pResultSet) throws SQLException;
+
 	/**
 	 * This function is used to perform a specified query.
-	 * 
+	 *
 	 * @param pQuery - Represents a {@code String} object.
 	 * @return An {@code Object}.
 	 */
@@ -54,7 +54,7 @@ public abstract class LogicJDBC {
 
 			// Extract data from given 'ResultSet' object ...
 			output = extractDataFromResultSet(mResultSet);
-	
+
 			// Close used resources...
 			mResultSet.close();
 			mStatement.close();
@@ -67,25 +67,18 @@ public abstract class LogicJDBC {
 
 		} finally {
 
-			// Closing 'Statement' object...
-			if (mStatement!=null)
-				try {
+			// Closing 'Statement' and 'Connection' object...
+			try {
+
+				if (mStatement!=null)
 					mStatement.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-					System.exit(1);
-				}
-			
-			// Closing 'Connection' object...
-			if (mConnection!=null)
-				try {
+				if (mConnection!=null)
 					mConnection.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-					System.exit(1);
-				}
-			
-			
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.exit(1);
+			}
 		}
 
 		return output;

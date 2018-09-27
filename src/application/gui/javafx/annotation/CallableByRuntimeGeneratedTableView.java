@@ -1,4 +1,4 @@
-package application.userinterface.annotation;
+package application.gui.javafx.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,7 +7,6 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-
-public @interface RepresentableData {
-	public String description() default "Unknown";
+public @interface CallableByRuntimeGeneratedTableView {
+    String description() default "Unknown";
 }

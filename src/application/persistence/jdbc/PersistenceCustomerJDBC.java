@@ -6,13 +6,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import application.entity.customer.Customer;
 import application.persistence.jdbc.annotation.CustomerSetterJDBC;
 import application.entity.customer.Gender;
 import application.entity.customer.Title;
 import application.persistence.PersistenceCustomer;
 import application.persistence.jdbc.logic.LogicJDBC;
+import application.persistence.jdbc.logic.LogicJDBCExecutionQueryUniqueIntegerResult;
+import application.persistence.jdbc.logic.LogicJDBCExecutionQueryUniqueLongResult;
+import application.persistence.jdbc.logic.LogicJDBCExecutionQueryWithNullResult;
 
 public class PersistenceCustomerJDBC implements PersistenceCustomer {
 
@@ -33,15 +35,7 @@ public class PersistenceCustomerJDBC implements PersistenceCustomer {
     public int insert(Customer pCustomer) {
 
         // Allocation 'LogicJDBC' object...
-        LogicJDBC mLogicJDBC = new LogicJDBC() {
-
-            public Object extractDataFromResultSet(ResultSet pResultSet) throws SQLException {
-
-                if (pResultSet.next())
-                    return (Integer) pResultSet.getInt(1);
-                return null;
-            }
-        };
+        LogicJDBC mLogicJDBC = new LogicJDBCExecutionQueryUniqueIntegerResult();
 
         // Generating query...
         String mQuery = String.format("INSERT INTO %s (%s, %s, %s, %s) VALUES ('%s','%s','%s','%s') RETURNING %s",
@@ -61,13 +55,7 @@ public class PersistenceCustomerJDBC implements PersistenceCustomer {
     public void delete(Customer pCustomer) {
 
         // Allocation 'LogicJDBC' object...
-        LogicJDBC mLogicJDBC = new LogicJDBC() {
-            @Override
-            public Object extractDataFromResultSet(ResultSet pResultSet) throws SQLException {
-                return null;
-            }
-        };
-
+        LogicJDBC mLogicJDBC = new LogicJDBCExecutionQueryWithNullResult();
 
         // Generating query...
         String mQuery = String.format("DELETE FROM %s CASCADE WHERE %s='%s' RETURNING NULL",
@@ -76,20 +64,13 @@ public class PersistenceCustomerJDBC implements PersistenceCustomer {
 
         // Perform...
         mLogicJDBC.performQuery(mQuery);
-
-
     }
 
     @Override
     public void update(Customer pCustomer) {
 
         // Allocation 'LogicJDBC' object...
-        LogicJDBC mLogicJDBC = new LogicJDBC() {
-
-            public Object extractDataFromResultSet(ResultSet pResultSet) throws SQLException {
-                return null;
-            }
-        };
+        LogicJDBC mLogicJDBC = new LogicJDBCExecutionQueryWithNullResult();
 
         // Generating query...
         String mQuery = String.format("UPDATE %s SET %s='%s', %s='%s', %s='%s', %s='%s' WHERE %s='%s' RETURNING NULL",
@@ -181,15 +162,7 @@ public class PersistenceCustomerJDBC implements PersistenceCustomer {
     public long getCount() {
 
         // Allocation 'LogicJDBC' object...
-        LogicJDBC mLogicJDBC = new LogicJDBC() {
-
-            public Object extractDataFromResultSet(ResultSet pResultSet) throws SQLException {
-
-                if (pResultSet.next())
-                    return (Long) pResultSet.getLong(1);
-                return null;
-            }
-        };
+        LogicJDBC mLogicJDBC = new LogicJDBCExecutionQueryUniqueLongResult();
 
         // Generating query...
         String mQuery = String.format("SELECT COUNT(*) FROM %s", Customer.class.getSimpleName());
@@ -197,8 +170,4 @@ public class PersistenceCustomerJDBC implements PersistenceCustomer {
         // Perform...
         return (long) mLogicJDBC.performQuery(mQuery);
     }
-
-
-
-
 }

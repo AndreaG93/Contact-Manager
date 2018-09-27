@@ -1,9 +1,10 @@
-package application.userinterface.javafx.customerlist;
+package application.gui.javafx.gui.customerlist;
 
 
 import application.entity.customer.Customer;
 import application.logic.CustomerManager;
-import application.userinterface.javafx.UserInterfaceJavaFX;
+import application.gui.javafx.gui.UserInterfaceJavaFX;
+import application.gui.javafx.gui.customeredit.UserInterfaceJavaFXCustomerEdit;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
@@ -41,19 +42,13 @@ public class UserInterfaceJavaFXCustomerList extends UserInterfaceJavaFX {
 	@FXML
 	private ImageView imgvw_new_customer;
 
-	/**
-	 * Constructs a newly allocated {@code ViewListCustomer} object.
-	 * 
-	 * @param customerManager
-	 *            - Represents a {@code CustomerManager} object.
-	 * @throws Exception
-	 */
+
+
 	public UserInterfaceJavaFXCustomerList() throws Exception {
 		
 		super();
 		
 		this.customerTable = new UserInterfaceJavaFXCustomerTable();
-		
 
 		/* Setting up button's icons. */
 		this.imgvw_new_customer.setImage(new Image("file:resource/default_icon.png"));
@@ -83,11 +78,7 @@ public class UserInterfaceJavaFXCustomerList extends UserInterfaceJavaFX {
 
 		// Update page count...
 		long dataCount = CustomerManager.getPersistenceSystem().getCount();
-		
-		System.out.println(dataCount);
-		
-		
-		
+
 		int pageCount = (int) (CustomerManager.getPersistenceSystem().getCount() / PAGE_SIZE);
 
 		if ((int) CustomerManager.getPersistenceSystem().getCount() % PAGE_SIZE != 0)
@@ -167,26 +158,26 @@ public class UserInterfaceJavaFXCustomerList extends UserInterfaceJavaFX {
 	 */
 	@FXML
 	void OnAction_edit(ActionEvent event) {
-		/*
+
 		// Get selected "Customer" object.
-		Customer selectedCustomer = this.myCustomerTable.getSelectionModel().getSelectedItem();
+		Customer selectedCustomer = this.customerTable.getSelectionModel().getSelectedItem();
 
 		// Open edit view. 
 		try {
 
 			// Allocate a new "ViewCreateOrEditCustomer" object.
-			ViewCreateOrEditCustomer view = new ViewCreateOrEditCustomer(this.customerManager, selectedCustomer);
+			UserInterfaceJavaFXCustomerEdit view = new UserInterfaceJavaFXCustomerEdit(selectedCustomer);
 
 			// Setting up observer and show view. 
 			view.addObserver(this);
-			view.show();
+			view.showUserInterface();
 
 		} catch (Exception e) {
 
-			ViewUtilities.showMessage(e.getMessage(), Alert.AlertType.ERROR);
-			return;
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setHeaderText(e.getMessage());
+			alert.show();
 		}
-		 */
 	}
 
 	/**

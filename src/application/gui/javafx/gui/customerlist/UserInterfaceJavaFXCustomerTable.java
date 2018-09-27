@@ -1,6 +1,6 @@
-package application.userinterface.javafx.customerlist;
+package application.gui.javafx.gui.customerlist;
 
-import application.userinterface.annotation.RepresentableData;
+import application.gui.javafx.annotation.CallableByRuntimeGeneratedTableView;
 import application.entity.customer.Customer;
 import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
@@ -20,7 +20,7 @@ public class UserInterfaceJavaFXCustomerTable extends TableView<Customer> {
 	public UserInterfaceJavaFXCustomerTable() {
 
 		for (Method mMethod : Arrays.asList((Customer.class.getDeclaredMethods()))) {
-			RepresentableData mRepresentableData = mMethod.getAnnotation(RepresentableData.class);
+			CallableByRuntimeGeneratedTableView mRepresentableData = mMethod.getAnnotation(CallableByRuntimeGeneratedTableView.class);
 			if (mRepresentableData != null) {
 
 				// Creating new column...
